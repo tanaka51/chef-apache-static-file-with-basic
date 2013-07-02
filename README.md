@@ -29,5 +29,5 @@ $ knife solo preapre <host>
 run
 
 ```sh
-$ knife cook <host>
+$ knife solo cook <host>
 ```
