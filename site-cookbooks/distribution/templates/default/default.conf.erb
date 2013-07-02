@@ -1,0 +1,28 @@
+<VirtualHost *:80>
+        ServerAdmin <%= node['apache']['contact'] %>
+
+        DocumentRoot /var/www/
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        ErrorLog <%= node['apache']['log_dir'] %>/error.log
+        LogLevel warn
+
+        CustomLog <%= node['apache']['log_dir'] %>/access.log combined
+        ServerSignature On
+
+        <% if %w{ rhel fedora }.include?(node['platform_family']) -%>
+        #
+        # This configuration file enables the default "Welcome"
+        # page if there is no default index page present for
+        # the root URL.  To disable the Welcome page, comment
+        # out all the lines below.
+        #
+        <LocationMatch "^/+$">
+            Options -Indexes
+            ErrorDocument 403 /error/noindex.html
+        </LocationMatch>
+        <% end -%>
+</VirtualHost>
