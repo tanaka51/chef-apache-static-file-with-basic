@@ -1,0 +1,8 @@
+{
+  "sha": "0f2dcb6174a7f65805ee8a345f936f4c86434a99",
+  "sources": {
+    "apache2": {
+      "locked_version": "1.6.6"
+    }
+  }
+}
