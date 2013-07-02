@@ -5,6 +5,10 @@
         <Directory />
                 Options FollowSymLinks
                 AllowOverride None
+                AuthUserFile <%= node['auth']['password_path'] %>
+                AuthName "Basic Auth"
+                AuthType Basic
+                Require valid-user
         </Directory>
 
         ErrorLog <%= node['apache']['log_dir'] %>/error.log
