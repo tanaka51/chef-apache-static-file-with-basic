@@ -8,10 +8,6 @@ Apache を使って
 
 をできるようにします。
 
-# TODO
-
-* BASIC 認証の設定
-
 # REQUIREMENTS
 
 * install and setup chef, knife-solo(chef plugin) and berkshelf
