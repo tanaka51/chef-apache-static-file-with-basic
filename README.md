@@ -19,7 +19,7 @@ for the first time only,
 
 ```sh
 $ berks install
-$ knife solo preapre <host>
+$ knife solo prepare <host>
 ```
 
 run
