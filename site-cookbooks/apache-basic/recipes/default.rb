@@ -29,20 +29,10 @@ cookbook_file "/var/www/dumps/test.dump" do
 end
 
 # basic authentication
-basic_auth = {}
-node['auth']['basic'].each do |basic|
-  user, pass = basic.split(':')
-  basic_auth[user] = pass
-end
-
-basic_auth.keys.each do |user|
-  bash "setup BASIC auth username: #{user}" do
-    not_if "cat #{node['auth']['password_path']} | grep -e ^#{user}: >/dev/null 2>&1"
-
-    user "root"
-    group node['apache']['root_group']
-    code <<-EOC
-      echo "#{user}:`openssl passwd -apr1 #{basic_auth[user]}`" >> #{node['auth']['password_path']}
-    EOC
-  end
+template node['auth']['password_path'] do
+  path node['auth']['password_path']
+  source "htpasswd.erb"
+  mode 00644
+  owner "root"
+  group node['apache']['root_group']
 end
