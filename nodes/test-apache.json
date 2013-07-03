@@ -1,6 +1,6 @@
 {
     "run_list":[
         "apache2",
-        "distribution"
+        "apache-basic"
     ]
 }
